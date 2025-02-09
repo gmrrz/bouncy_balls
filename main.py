@@ -1,6 +1,8 @@
 import pygame 
 import sys
 
+from player import Player
+
 # Initialize Pygame into code
 pygame.init()
 
@@ -10,13 +12,8 @@ screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Clown Invaders")
 
-# Square attributes
-square_color = (255, 0, 0) # RED
-square_size = 50 # w and h of the square
-x, y = 200, 200
-
-# Speed of the square's movement
-speed = .5
+# Creating the player
+player = Player(color = (255, 0, 0), size=50, x=375, y=275, speed=.5)
 
 # Game Loop
 running = True
@@ -28,21 +25,14 @@ while running:
 
     keys = pygame.key.get_pressed()
 
-    # Update position based on arrow keys
-    if keys[pygame.K_LEFT]: # Move left
-        x -= speed
-    if keys[pygame.K_RIGHT]: # Move right
-        x += speed
-    if keys[pygame.K_UP]: # Move up
-        y -= speed
-    if keys[pygame.K_DOWN]: # Move down
-        y += speed
+    # Move the player
+    player.move(keys)
 
-    # Yellow BG
+    # BG colorr
     screen.fill((255, 232, 85))
 
-    # Draw the sprite
-    pygame.draw.rect(screen, square_color, (x, y, square_size, square_size))
+    # Draw the player
+    player.draw(screen)
 
     # Update the display
     pygame.display.update()
