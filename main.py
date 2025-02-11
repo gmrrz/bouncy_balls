@@ -13,7 +13,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Clown Invaders")
 
 # Creating the player
-player = Player(color = (255, 0, 0), size=50, x=375, y=275, speed=.5)
+player = Player(color = (255, 248, 194), size=50, x=375, y=275, speed=.5, gravity=0.1)
 
 # Game Loop
 running = True
